@@ -1,0 +1,5 @@
+# See https://rust-lang.github.io/rustfmt/?version=master&search=
+max_width = 100
+reorder_imports = true
+reorder_modules = true
+# group_imports = "StdExternalCrate"
