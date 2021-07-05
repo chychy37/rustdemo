@@ -1,4 +1,5 @@
 [workspace]
 members = [
-    "amqp-demo"
+    "amqp-demo",
+    "datetime-demo",
 ]
