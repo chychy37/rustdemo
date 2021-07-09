@@ -9,7 +9,10 @@ pub fn sha256_hex<T: AsRef<[u8]>>(input: T) -> String {
 }
 
 pub fn sha256_bytes<T: AsRef<[u8]>>(input: T) -> Vec<u8> {
-    sha256_hex(input).into_bytes()
+    let mut sha256 = sha2::Sha256::new();
+    sha256.update(input);
+    let finalize = sha256.finalize();
+    finalize.to_vec()
 }
 
 #[cfg(test)]
