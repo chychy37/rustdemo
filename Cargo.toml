@@ -1,6 +1,8 @@
 [workspace]
 members = [
     "amqp-demo",
+    "crypt-demo",
     "datetime-demo",
+    "encoding-demo",
     "uuid-demo",
 ]
