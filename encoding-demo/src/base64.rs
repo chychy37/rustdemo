@@ -4,14 +4,13 @@ pub fn encode_to_string<T: AsRef<[u8]>>(input: T) -> String {
     base64::encode(input)
 }
 
-pub fn decode_to_string<T: AsRef<[u8]>>(input: T) -> String {
-    let decode_bytes = base64::decode(input).expect("base64 decode error");
-    String::from_utf8(decode_bytes).expect("decode_bytes parse error")
+pub fn decode_to_vec<T: AsRef<[u8]>>(input: T) -> Vec<u8> {
+    base64::decode(input).expect("base64 decode error")
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::base64::{decode_to_string, encode_to_string};
+    use crate::base64::{decode_to_vec, encode_to_string};
 
     #[test]
     fn test_base64_encode() {
@@ -24,10 +23,10 @@ mod tests {
 
     #[test]
     fn test_base_64_decode() {
-        let decode_1 = decode_to_string("cXdl");
-        let decode_2 = decode_to_string([99, 88, 100, 108]);
-        let decode_3 = decode_to_string(vec![99, 88, 100, 108]);
-        // qwe, qwe, qwe
-        println!("{}, {}, {}", decode_1, decode_2, decode_3);
+        let decode_1 = decode_to_vec("cXdl");
+        let decode_2 = decode_to_vec([99, 88, 100, 108]);
+        let decode_3 = decode_to_vec(vec![99, 88, 100, 108]);
+        // [113, 119, 101], [113, 119, 101], [113, 119, 101]
+        println!("{:?}, {:?}, {:?}", decode_1, decode_2, decode_3);
     }
 }
