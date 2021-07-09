@@ -1,5 +1,3 @@
-use hex;
-
 pub fn encode_to_lower_string<T: AsRef<[u8]>>(input: T) -> String {
     hex::encode(input)
 }

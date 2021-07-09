@@ -1,5 +1,3 @@
-use base64;
-
 pub fn encode_to_string<T: AsRef<[u8]>>(input: T) -> String {
     base64::encode(input)
 }
